@@ -26,7 +26,7 @@ No installation necessary.
 
 Below are screenshots of the Password Generator webpage.
 
-![Screenshot 1](./Assets/Images/password_generator_screenshot1.JPG)
+![Screenshot 1](./assets/images/password_generator_screenshot1.JPG)
 
 ## Credits
 
