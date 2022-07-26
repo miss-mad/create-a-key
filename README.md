@@ -33,10 +33,15 @@ Below are screenshots of the Password Generator webpage.
 Collaborators: 
 
 Firmin Saint-Amour - Instructor
+
 Andres Inciarte - TA
+
 Andres Jimenez - TA
+
 Insha Sayani - fellow bootcamper; github page unknown
+
 Jeremy Parson - fellow bootcamper; github page unknown
+
 Bernie Petters - fellow bootcamper; github page unknown
 
 
