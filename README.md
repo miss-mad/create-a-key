@@ -26,11 +26,18 @@ No installation necessary.
 
 Below are screenshots of the Password Generator webpage.
 
-![Screenshot 1](./assets/images/password_generator_screenshot1.JPG)
+![Password Generator screenshot 1](./assets/images/password_generator_screenshot1.JPG)
 
 ## Credits
 
 Collaborators: 
+
+Firmin Saint-Amour - Instructor
+Andres Inciarte - TA
+Andres Jimenez - TA
+Insha Sayani - fellow bootcamper; github page unknown
+Jeremy Parson - fellow bootcamper; github page unknown
+Bernie Petters - fellow bootcamper; github page unknown
 
 
 List of resources used:
