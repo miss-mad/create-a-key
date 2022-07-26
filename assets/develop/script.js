@@ -24,7 +24,7 @@ document.addEventListener(
         passwordLength = Math.floor(userInputLength);
       } else {
         alert(
-          "We insist that password length is between 8 and 128. Please try again."
+          "We insist that password length is a number between 8 and 128. Please try again."
         );
         promptForPasswordLength();
       }
@@ -40,117 +40,113 @@ document.addEventListener(
     // Four function expressions to ask user if they want to include certain criteria for their password
 
     var promptForLowerCase = function () {
-      var lowerCase = "";
+      // var lowerCase = "";
       userInputLowerCase = confirm(
         "Should your password have LOWERCASE letters?"
       );
-      userInputLowerCase === true
-        ? (lowerCase = userInputLowerCase)
-        : lowerCase !== userInputLowerCase;
+      // userInputLowerCase === true
+      //   ? (lowerCase = userInputLowerCase)
+      //   : lowerCase !== userInputLowerCase;
 
-      return lowerCase;
+      return userInputLowerCase;
     };
 
     var promptForUpperCase = function () {
-      var upperCase = "";
+      // var upperCase = "";
       userInputUpperCase = confirm(
         "Should your password have UPPERCASE letters?"
       );
 
-      userInputUpperCase === true
-        ? (upperCase = userInputUpperCase)
-        : upperCase !== userInputUpperCase;
+      // userInputUpperCase === true
+      //   ? (upperCase = userInputUpperCase)
+      //   : upperCase !== userInputUpperCase;
 
-      return upperCase;
+      return userInputUpperCase;
     };
 
     var promptForSymbols = function () {
-      var symbols = "";
+      // var symbols = "";
       userInputSymbols = confirm(
         "Should your password have SPECIAL CHARACTERS?"
       );
 
-      userInputSymbols === true
-        ? (symbols = userInputSymbols)
-        : symbols !== userInputSymbols;
+      // userInputSymbols === true
+      //   ? (symbols = userInputSymbols)
+      //   : symbols !== userInputSymbols;
 
-      return symbols;
+      return userInputSymbols;
     };
 
     var promptForNumbers = function () {
-      var numbers = "";
+      // var numbers = "";
       userInputNumbers = confirm("Should your password have NUMBERS?");
 
-      userInputNumbers === true
-        ? (numbers = userInputNumbers)
-        : numbers !== userInputNumbers;
+      // userInputNumbers === true
+      //   ? (numbers = userInputNumbers)
+      //   : numbers !== userInputNumbers;
 
-      return numbers;
+      return userInputNumbers;
     };
 
     // solution 1 - trying to wrap 4 condition function expressions inside if/else/if statement
 
-    function runConditions () {
-    if (userInputLowerCase) {
-      var promptForLowerCase = function () {
-        var lowerCase = "";
-        var userInputLowerCase = confirm(
-          "Should your password have LOWERCASE letters?"
-        );
+    function runConditions() {
+      if (userInputLowerCase) {
+        var promptForLowerCase = function () {
+          var lowerCase = "";
+          var userInputLowerCase = confirm(
+            "Should your password have LOWERCASE letters?"
+          );
 
-        userInputLowerCase === true
-          ? (lowerCase = userInputLowerCase)
-          : lowerCase !== userInputLowerCase;
+          userInputLowerCase === true
+            ? (lowerCase = userInputLowerCase)
+            : lowerCase !== userInputLowerCase;
 
-        return lowerCase;
-      };
-    } else if (userInputUpperCase) {
+          return lowerCase;
+        };
+      } else if (userInputUpperCase) {
+        var promptForUpperCase = function () {
+          var upperCase = "";
+          var userInputUpperCase = confirm(
+            "Should your password have UPPERCASE letters?"
+          );
 
-      var promptForUpperCase = function () {
-        var upperCase = "";
-        var userInputUpperCase = confirm(
-          "Should your password have UPPERCASE letters?"
-        );
+          userInputUpperCase === true
+            ? (upperCase = userInputUpperCase)
+            : upperCase !== userInputUpperCase;
 
-        userInputUpperCase === true
-          ? (upperCase = userInputUpperCase)
-          : upperCase !== userInputUpperCase;
+          return upperCase;
+        };
+      } else if (userInputSymbols) {
+        var promptForSymbols = function () {
+          var symbols = "";
+          var userInputSymbols = confirm(
+            "Should your password have SPECIAL CHARACTERS?"
+          );
 
-        return upperCase;
-      };
-    } else if (userInputSymbols) {
+          userInputSymbols === true
+            ? (symbols = userInputSymbols)
+            : symbols !== userInputSymbols;
 
-      var promptForSymbols = function () {
-        var symbols = "";
-        var userInputSymbols = confirm(
-          "Should your password have SPECIAL CHARACTERS?"
-        );
+          return symbols;
+        };
+      } else if (userInputNumbers) {
+        var promptForNumbers = function () {
+          var numbers = "";
+          var userInputNumbers = confirm("Should your password have NUMBERS?");
 
-        userInputSymbols === true
-          ? (symbols = userInputSymbols)
-          : symbols !== userInputSymbols;
+          userInputNumbers === true
+            ? (numbers = userInputNumbers)
+            : numbers !== userInputNumbers;
 
-        return symbols;
-      };
-    } else if (userInputNumbers) {
-
-      var promptForNumbers = function () {
-        var numbers = "";
-        var userInputNumbers = confirm("Should your password have NUMBERS?");
-
-        userInputNumbers === true
-          ? (numbers = userInputNumbers)
-          : numbers !== userInputNumbers;
-
-        return numbers;
-      };
-      
-    } else {
-      alert("You must select at least one condition. Please try again.")
-    };
-  };
-
-    
+          return numbers;
+        };
+      } else {
+        alert("You must select at least one condition. Please try again.");
+        promptForPasswordLength();
+        // generatePassword();
+      }
+    }
 
     // solution 2 - trying to give while loop a variable so it doesn't run infinitely
 
@@ -214,6 +210,7 @@ document.addEventListener(
       var max = array.length;
       var min = 0;
       var randomIndex = Math.floor(Math.random() * (max - min) + min);
+      console.log(randomIndex, "I am random index");
       return randomIndex;
     };
 
@@ -225,6 +222,8 @@ document.addEventListener(
       hasNumbers
     ) {
       var availablePasswordValues = [];
+
+      console.log(isLowerCase, isUpperCase, hasSymbols, hasNumbers);
 
       if (isLowerCase) {
         availablePasswordValues = availablePasswordValues.concat(lowerCase);
@@ -242,6 +241,7 @@ document.addEventListener(
         availablePasswordValues = availablePasswordValues.concat(numbers);
       }
 
+      console.log(availablePasswordValues + "243");
       return availablePasswordValues;
     };
 
@@ -249,35 +249,53 @@ document.addEventListener(
     function generatePassword() {
       var password = "";
 
-      var passwordLength = promptForPasswordLength();
+      var passwordLength;
+      var passwordLowerCase;
+      var passwordUpperCase;
+      var passwordSymbols;
+      var passwordNumbers;
+      var availablePasswordValues;
 
-      var passwordLowerCase = promptForLowerCase();
-      var passwordUpperCase = promptForUpperCase();
-      var passwordSymbols = promptForSymbols();
-      var passwordNumbers = promptForNumbers();
+      // runConditions();
 
-      runConditions ();
+      while (
+        password.includes("undefined") ||
+        password === "" ||
+        password === undefined
+      ) {
+        passwordLength = promptForPasswordLength();
 
-      var availablePasswordValues = buildAvailablePasswordValuesArray(
-        passwordLowerCase,
-        passwordUpperCase,
-        passwordSymbols,
-        passwordNumbers
-      );
+        passwordLowerCase = promptForLowerCase();
+        passwordUpperCase= promptForUpperCase();
+        passwordSymbols = promptForSymbols();
+        passwordNumbers = promptForNumbers();
+        // runConditions();
+        availablePasswordValues = buildAvailablePasswordValuesArray(
+          passwordLowerCase,
+          passwordUpperCase,
+          passwordSymbols,
+          passwordNumbers
+        );
 
-      for (var i = 0; i < passwordLength; i++) {
-        password =
-          password +
-          availablePasswordValues[getRandomIndex(availablePasswordValues)];
+        if (availablePasswordValues.length > 0) {
+          for (var i = 0; i < availablePasswordValues.length; i++) {
+            password =
+              password +
+              availablePasswordValues[getRandomIndex(availablePasswordValues)];
+          }
+        } else {
+          password = "You must select at least one condition. Press Generate Password to try again."
+        }
+
+        console.log(availablePasswordValues);
+        console.log(password);
       }
-
       return password;
     }
 
     // Write password to the #password input
     // Call the generatePassword function (above) and then we store the value from that function into this password variable.
     function writePassword() {
-
       // solution 3
       // if (!userInputLowerCase && !userInputUpperCase && !userInputSymbols && !userInputNumbers)
       //  { return true;
@@ -285,13 +303,14 @@ document.addEventListener(
       //   alert("You must select at least one condition. Please try again.");
       //   return false;
       // };
-   
+
       var password = generatePassword();
+      console.log(password);
       // Creates a variable passwordText that is set equal to the elements with the #password ID, which is the card in html (where generated password displays on the screen)
       var passwordText = document.querySelector("#password");
       // Takes value from generated password and plugs it into what's displayed on the screen
       passwordText.value = password;
-    };
+    }
 
     // Add event listener to generate button so that when user clicks the generate button, it will call the writePassword function (above)
     generateBtn.addEventListener("click", writePassword);
